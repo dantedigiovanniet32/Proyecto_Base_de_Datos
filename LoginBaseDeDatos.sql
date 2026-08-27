@@ -1,8 +1,10 @@
--- Crear la base de datos
-CREATE DATABASE IF NOT EXISTS login_sql;
-USE login_sql;
--- Crear la tabla de usuarios
-CREATE TABLE IF NOT EXISTS usuarios (
+drop database if exists login_sql;
+create database login_sql;
+use login_sql;
+
+drop table if exists usuarios;
+
+create table usuarios (
 id INT AUTO_INCREMENT PRIMARY KEY,
 nombre VARCHAR(100) NOT NULL,
 email VARCHAR(100) NOT NULL,
