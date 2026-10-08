@@ -1,30 +1,21 @@
 <?php
 include 'conexion.php';
 
-
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $nombre = $_POST['nombre'] ?? '';
-    $cude = $_POST['cude'] ?? '';
-    $email = $_POST['email'] ?? '';
-    $contraseniaRaw = $_POST['contrasenia'] ?? '';
-    $numeroTLF = $_POST['numeroTLF'] ?? '';
+    $nombre = mysqli_real_escape_string($conexion, $_POST['nombre']);
+    $email  = mysqli_real_escape_string($conexion, $_POST['email']);
+    $cude = mysqli_real_escape_string($conexion, $_POST['cude']);
+    $contra = mysqli_real_escape_string($conexion, $_POST['contrasenia']);
+    $numeroTLF = mysqli_real_escape_string($conexion, $_POST['numeroTLF']);
 
-    $contrasenia = password_hash($contraseniaRaw, PASSWORD_DEFAULT);
+    $sql = "INSERT INTO sucursales (nombre, cude, email, contrasenia, numeroTLF) 
+    VALUES ('$nombre', '$cude', '$email','$contra', '$numeroTLF')";
 
-    // guardo la sucursal
-    $stmt = $conexion->prepare("INSERT INTO sucursales (nombre, contrasenia, cude, correo, telefono) VALUES (?, ?, ?, ?, ?)");
-    $stmt->bind_param("sssss", $nombre, $contrasenia, $cude, $email, $numeroTLF);
-
-    if ($stmt->execute()) {
+    if ($conexion->query($sql) === TRUE) {
         echo "Registro guardado correctamente";
     } else {
-        echo "Error al registrar en la base de datos: " . $stmt->error;
+        echo "Error al registrar: " . $conexion->error;
     }
 }
-
-
-
-
 $conexion->close();
 ?>
