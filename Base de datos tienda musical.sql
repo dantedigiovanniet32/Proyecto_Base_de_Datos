@@ -1,3 +1,7 @@
+CREATE DATABASE login_sql;
+USE login_sql;
+
+
 CREATE TABLE provincias (
     id_provincia INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100),
