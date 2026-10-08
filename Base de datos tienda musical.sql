@@ -26,7 +26,6 @@ CREATE TABLE sucursales (
     id_sucursal INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100),
     id_calle INT,
-    usuario VARCHAR(50),
     contrasenia VARCHAR(255),
     cude VARCHAR(50),
     correo VARCHAR(100),
