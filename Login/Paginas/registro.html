@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Sucursales</title>
+    <link rel="stylesheet" href="../Estilos/estilo.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Registrar Nueva Sucursal</h2>
+        <form action="../PHPs/insert_sucursales.php" method="POST">
+            <label>Nombre:</label>
+            <input type="text" name="nombre" placeholder="Mataderos Norte" required>
+
+            <label>CUDE (Código Único de Identificación de Establecimientos):</label>
+            <input type="text" name="cude" placeholder="01234" required>
+
+            <label>Correo Electrónico:</label>
+            <input type="email" name="email" placeholder="ejemplo@correo.com" required>
+
+            <label>Contraseña:</label>
+            <input type="password" name="contrasenia" placeholder="Password123" required>
+
+            <label>Teléfono:</label>
+            <input type="tel" name="numeroTLF" placeholder="1123456789" required>
+            <button type="submit">Guardar en Base de Datos</button>
+        </form>
+    </div>
+</body>
+</html>
